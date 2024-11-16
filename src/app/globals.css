@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.image-gallery-thumbnail img {
+    width: 100px; /* İstediğiniz genişlik */
+    height: 100px; /* İstediğiniz yükseklik */
+    object-fit: cover; /* Görselleri kırpmadan kutuya sığdırır */
+    border-radius: 5px; /* Hafif köşe yuvarlama, isteğe bağlı */
+}
+
+/* Büyük görsel için */
+.image-gallery-slide img {
+    width: 100%; /* Görselin genişliği */
+    height: 400px; /* Sabit yükseklik */
+    object-fit: contain; /* Görseli kırpmadan sığdırır */
+}
+
