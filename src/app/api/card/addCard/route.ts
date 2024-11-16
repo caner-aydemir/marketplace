@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
         // Sepete ekleme başarılıysa, gelen veriyi ve durumu döndürüyorum
         return NextResponse.json({ data: response.data, status: true });
-    } catch (error) {
+    } catch (error: any) {
 
         // Kullanıcıya hata mesajını JSON formatında dönüyorum
         return NextResponse.json({ status: false, message: error.message });

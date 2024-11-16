@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(response.data);
     } catch (error: any) {
         // Eğer bir hata oluşursa, boş bir dizi döndürerek kullanıcıya sorun olmadığını hissettiriyorum
-        const nullData = [];
+        const nullData: any[] = []; // Türü açıkça belirtiyorum
 
         // Hatanın daha iyi anlaşılabilmesi için yanıtı boş bir diziyle döndürüyorum
         return NextResponse.json(nullData);

@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import queryMaker from "@/utils/queryMaker";
 
 // Filtre parametrelerini tanımlıyorum
 interface IFilterParams {

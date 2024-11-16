@@ -6,17 +6,16 @@ import { useRouter } from "next/navigation";
 import ImageGallery from "react-image-gallery";
 import { useAddCard } from "@/hooks/useAddCard";
 import { DetailProductContent } from "@/components/DetailProduct/DetailProductContent";
-import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: string }> }) => {
     const params = React.use(paramsPromise);
     const productId = params.id;
-    const { data:productDetailData, isFetching, error } = useDetailProduct(
+    const { data: productDetailData, isFetching, error } = useDetailProduct(
         productId
     );
-    const { data:productCommentsData, isFetching: commentsIsLoading } =
+    const { data: productCommentsData, isFetching: commentsIsLoading } =
         useProductReviews(productId);
-    const {addCardFunction} = useAddCard()
+    const { addCardFunction } = useAddCard()
     const router = useRouter();
 
     if (isFetching) {
@@ -66,9 +65,9 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: st
                         items={productDetailData.images.map((image) => ({
                             original: image,
                             thumbnail: image,
-                            showFullscreenButton:false,
-                            showPlayButton:false,
-                            useBrowserFullscreen:false,
+                            showFullscreenButton: false,
+                            showPlayButton: false,
+                            useBrowserFullscreen: false,
                         }))}
                     />
 

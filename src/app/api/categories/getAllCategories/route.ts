@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import apiClient from '@/utils/apiClient';
 
-export async function POST(request: NextRequest) {
+export async function POST() {
     try {
         // Ürün kategorilerini almak için '/products/categories' endpoint'ine bir GET isteği yapıyorum
         const response = await apiClient.get('/products/categories');

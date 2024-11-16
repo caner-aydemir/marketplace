@@ -9,7 +9,6 @@ interface ToastContextType {
     type: "success" | "error" | null; // Toast tipi: success veya error
     showToast: (type: "success" | "error", message: string) => void; // Toast'u gösterme fonksiyonu
     hideToast: () => void; // Toast'u gizleme fonksiyonu
-    position?: "top-right" | "bottom-right"; // Pozisyon prop'u
 
 }
 
@@ -22,7 +21,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const [type, setType] = useState<"success" | "error" | null>(null); // Toast türünü tutuyorum
 
     // Toast'u gösterme fonksiyonu
-    const showToast = (toastType: "success" | "error", toastMessage: string , position = "bottom-right") => {
+    const showToast = (toastType: "success" | "error", toastMessage: string) => {
         setType(toastType); // Toast türünü ayarlıyorum
         setMessage(toastMessage); // Mesajı ayarlıyorum
         setTimeout(() => hideToast(), 3000); // 3 saniye sonra Toast'u gizliyorum

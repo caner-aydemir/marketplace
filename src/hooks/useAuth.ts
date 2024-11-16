@@ -42,6 +42,7 @@ export const useAuth = () => {
                 showToast("error", data.message);
             }
         } catch (error) {
+            console.error("Error", error)
             // Hata oluşursa kullanıcıya bir mesaj gösteriyorum
             showToast("error", "Giriş sırasında bir hata oluştu.");
         } finally {
@@ -77,6 +78,8 @@ export const useAuth = () => {
                 showToast("error", "Çıkış işlemi başarısız.");
             }
         } catch (error) {
+            console.error("Error", error)
+
             // Hata oluşursa kullanıcıya bir mesaj gösteriyorum
             showToast("error", "Çıkış sırasında bir hata oluştu.");
         } finally {

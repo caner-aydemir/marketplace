@@ -27,6 +27,8 @@ export async function POST(request: NextRequest) {
         // Son olarak kullanıcı verisiyle birlikte yanıtı döndürüyorum
         return responseWithCookie;
     } catch (error) {
+        console.error(error)
+
         // Eğer giriş başarısız olursa, kullanıcıya hata mesajını dönüyorum
         return NextResponse.json({ status: false, message: 'Kullanıcı adı veya şifre hatalı' }, { status: 401 });
     }

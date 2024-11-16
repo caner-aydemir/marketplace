@@ -34,6 +34,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 setUser(null); // Eğer başarısızsa kullanıcı bilgisini sıfırlıyorum
             }
         } catch (error) {
+            console.log("Error", error)
             setUser(null); // Kullanıcı bilgisini sıfırlıyorum
         }
     };
