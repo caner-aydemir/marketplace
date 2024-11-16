@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import ImageGallery from "react-image-gallery";
 import { useAddCard } from "@/hooks/useAddCard";
 import { DetailProductContent } from "@/components/DetailProduct/DetailProductContent";
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: string }> }) => {
     const params = React.use(paramsPromise);
