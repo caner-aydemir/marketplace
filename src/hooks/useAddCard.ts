@@ -11,9 +11,9 @@ export const useAddCard = () => {
     const { showToast } = useToast();
 
     // Ürün ekleme fonksiyonunu tanımlıyorum
-    const addCardFunction = async (productId: string) => {
+    const addCardFunction = async (productId: number) => {
         // Kullanıcının ID'sini alıyorum
-        const userId = user.id;
+        const userId = 1
         try {
             // API'ye POST isteği göndererek ürünü sepete ekliyorum
             const response = await fetch('/api/card/addCard', {

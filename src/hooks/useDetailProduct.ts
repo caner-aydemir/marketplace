@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "../types/Product";
 
 // Belirli bir ürünün detaylarını API'den getiren fonksiyonu tanımlıyorum
-const fetchDetailProduct = async (productId: string): Promise<Product> => {
+const fetchDetailProduct = async (productId: number): Promise<Product> => {
     // API'ye POST isteği gönderiyorum ve ürün ID'sini iletmek için request body'yi dolduruyorum
     const response = await fetch('/api/products/getProductById', {
         method: "POST",
@@ -23,7 +23,7 @@ const fetchDetailProduct = async (productId: string): Promise<Product> => {
 };
 
 // Ürün detaylarını almak için React Query kullanıyorum
-const useDetailProduct = (productId: string) => {
+const useDetailProduct = (productId: number) => {
     // React Query'nin useQuery hook'unu kullanarak API'den veriyi alıyorum
     const {
         data, // API'den gelen ürün detayları

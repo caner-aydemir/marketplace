@@ -1,25 +1,29 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useDetailProduct from "@/hooks/useDetailProduct";
 import useProductReviews from "@/hooks/useProductReviews";
 import { useRouter } from "next/navigation";
 import ImageGallery from "react-image-gallery";
 import { useAddCard } from "@/hooks/useAddCard";
 import { DetailProductContent } from "@/components/DetailProduct/DetailProductContent";
-import 'react-image-gallery/styles/css/image-gallery.css';
+import "react-image-gallery/styles/css/image-gallery.css";
 
-const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: string }> }) => {
-    const params = React.use(paramsPromise);
-    const productId = params.id;
-    const { data: productDetailData, isFetching, error } = useDetailProduct(
-        productId
-    );
-    const { data: productCommentsData, isFetching: commentsIsLoading } =
-        useProductReviews(productId);
-    const { addCardFunction } = useAddCard()
+const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: number }> }) => {
+    const [productId, setProductId] = useState<number | null>(null);
+    const { data: productDetailData, isFetching, error } = useDetailProduct(productId || 0);
+    const { data: productCommentsData, isFetching: commentsIsLoading } = useProductReviews(productId || 0);
+    const { addCardFunction } = useAddCard();
     const router = useRouter();
 
-    if (isFetching) {
+    // params Promise'ini çöz ve productId'yi ayarla
+    useEffect(() => {
+        (async () => {
+            const resolvedParams = await paramsPromise;
+            setProductId(resolvedParams.id);
+        })();
+    }, [paramsPromise]);
+
+    if (!productId || isFetching) {
         return (
             <div role="status" className="text-center mt-20">
                 <svg
@@ -54,9 +58,9 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: st
         );
     }
 
-    function addCardFunct(productId) {
-        addCardFunction(productId)
-    }
+    const addCardFunct = (productId: number) => {
+        addCardFunction(productId);
+    };
 
     return (
         <div>
@@ -71,7 +75,6 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: st
                             useBrowserFullscreen: false,
                         }))}
                     />
-
                 </div>
                 <div className="col-span-12 md:col-span-8">
                     <DetailProductContent
@@ -80,9 +83,7 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: st
                     />
                 </div>
             </div>
-            <div
-                className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 z-50"
-            >
+            <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 z-50">
                 <div className="flex items-center justify-evenly py-4">
                     <h1 className="font-bold px-6 py-4 border">Sipariş Özeti:</h1>
                     <div className="px-6">
@@ -98,7 +99,6 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: st
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };

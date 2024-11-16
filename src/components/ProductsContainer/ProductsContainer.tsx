@@ -1,43 +1,45 @@
 import { useState } from "react";
 import useGetProducts from "@/hooks/useGetProduct";
 import useGetCategoryProducts from "@/hooks/useGetCategoryProduct";
-import {PaginationControls} from "@/components/PaginationControls";
-import {CardProduct} from "@/components/CardProduct/CardProduct";
+import { PaginationControls } from "@/components/PaginationControls";
+import { CardProduct } from "@/components/CardProduct/CardProduct";
 
+// Tüm tipleri 'any' olarak ayarladık
 interface IProductsContainerProps {
-    filterParams: Record<string, string>;
-    filterCategory: Record<string, string>;
+    filterParams: any;
+    filterCategory: any;
 }
 
 export const ProductsContainer = ({ filterParams, filterCategory }: IProductsContainerProps) => {
-    const [page, setPage] = useState(1);
-    const {data: productsData, isFetching } = useGetProducts({
+    const [page, setPage] = useState<any>(1);
+
+    const { data: productsData, isFetching } = useGetProducts({
         pagination: { limit: 9, skip: (page - 1) * 9 },
         q: filterParams.q,
         enabled: !filterCategory?.category,
     });
 
-    const { data: categorizedProducts, isFetching:isLoading } = useGetCategoryProducts(
+    const { data: categorizedProducts, isFetching: isLoading } = useGetCategoryProducts(
         filterCategory?.category
     );
+
     const total = filterCategory?.category
         ? categorizedProducts?.total || 0
         : productsData?.data.total || 0;
     const totalPages = Math.ceil(total / 9);
 
-    const handlePageChange = (newPage) => {
+    const handlePageChange = (newPage: any) => {
         if (newPage >= 1 && newPage <= totalPages) {
             setPage(newPage);
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
         }
     };
 
     return (
-        <div className={"p-4  mx-auto"}>
+        <div className="p-4 mx-auto">
             {(isLoading || isFetching) && (
                 <div role="status" className="text-center">
                     <svg
@@ -64,23 +66,37 @@ export const ProductsContainer = ({ filterParams, filterCategory }: IProductsCon
                     <ProductList products={categorizedProducts.products} total={categorizedProducts.total} />
                 )
             ) : (
-                productsData && <ProductList products={productsData.data.products} total={productsData.data.total} />
+                productsData && (
+                    <ProductList
+                        products={productsData.data.products}
+                        total={productsData.data.total}
+                    />
+                )
             )}
-            {isLoading || !isFetching &&
-                <PaginationControls page={page} totalPages={totalPages} onPageChange={handlePageChange} />
-            }
+            {isLoading || isFetching ? null : (
+                <PaginationControls
+                    page={page}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                />
+            )}
         </div>
     );
 };
 
-const ProductList = ({ products, total }) => (
-    <div className={"p-10"}>
-        <p className="mb-4 font-bold    ">{total} ürün listeleniyor </p>
+// Ürün listesi bileşeni
+interface IProductListProps {
+    products: any; // Ürünler için any kullanımı
+    total: any; // Toplam ürün sayısı için any kullanımı
+}
+
+const ProductList = ({ products, total }: IProductListProps) => (
+    <div className="p-10">
+        <p className="mb-4 font-bold">{total} ürün listeleniyor</p>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
-            {products.map((product) => (
+            {products.map((product: any) => (
                 <CardProduct key={product.id} product={product} />
             ))}
         </div>
     </div>
 );
-

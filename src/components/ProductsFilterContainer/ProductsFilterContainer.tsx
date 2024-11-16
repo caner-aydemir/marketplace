@@ -3,14 +3,14 @@ import useGetAllCategories from "@/hooks/useGetAllCategories";
 import { debounce } from "../../utils/debounce/debonce";
 
 interface IProductsFilterContainerProps {
-    setFilterCategory: Dispatch<SetStateAction<object>>;
-    setFilterParams: Dispatch<SetStateAction<object>>;
+    setFilterCategory: Dispatch<SetStateAction<Record<string, string>>>;
+    setFilterParams: Dispatch<SetStateAction<Record<string, string>>>;
 }
 
 export const ProductsFilterContainer = ({
-                                            setFilterCategory,
-                                            setFilterParams,
-                                        }: IProductsFilterContainerProps) => {
+    setFilterCategory,
+    setFilterParams,
+}: IProductsFilterContainerProps) => {
     const { categories, error, isLoading } = useGetAllCategories();
     if (isLoading) return <p>Yükleniyor...</p>;
     if (error) return <p>Hata oluştu: {(error as Error).message}</p>;
@@ -31,7 +31,8 @@ export const ProductsFilterContainer = ({
 
         updateDebounceText(value, name);
     };
-    const updateDebounceText = debounce((text, name) => {
+
+    const updateDebounceText = debounce((text: any, name: any) => {
         setFilterParams((prev) => {
             if (text) {
                 return { ...prev, [name]: text };
@@ -52,19 +53,18 @@ export const ProductsFilterContainer = ({
     const handleFilter = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth",
         });
         setFilterCategory((prevParams) => ({
             ...prevParams,
             category: selectedCategory || "",
         }));
-
     };
 
     const handleClear = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth",
         });
         setSelectedCategory(null);
         setFilterCategory((prevParams) => ({
@@ -126,7 +126,7 @@ export const ProductsFilterContainer = ({
                 </div>
             ) : (
                 <div className="space-y-2">
-                    {categories?.map((category) => (
+                    {categories?.map((category: any) => (
                         <label key={category.slug} className="flex items-center text-sm text-gray-800">
                             <input
                                 type="checkbox"

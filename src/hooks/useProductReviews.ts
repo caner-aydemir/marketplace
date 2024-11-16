@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "../types/Product";
 
 // Ürün yorumlarını almak için bir API çağrısı yapan fonksiyonu tanımlıyorum
-const fetchProductReview = async (productId: string) => {
+const fetchProductReview = async (productId: number) => {
     // API'ye POST isteği yaparak ürünün yorumlarını alıyorum
     const response = await fetch('/api/products/getProductReview', {
         method: "POST",
@@ -23,7 +23,7 @@ const fetchProductReview = async (productId: string) => {
 };
 
 // Ürün yorumlarını almak için özel bir React Query hook'u oluşturuyorum
-const useProductReviews = (productId: string) => {
+const useProductReviews = (productId: number) => {
     const {
         data,        // API'den gelen veriler
         error,       // Hata durumu
