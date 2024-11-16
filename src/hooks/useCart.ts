@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UserContext } from '@/providers/UserContext';
+import { UserContext } from '../Providers/UserContext';
 
 export const useCart = () => {
     // UserContext'e erişiyorum

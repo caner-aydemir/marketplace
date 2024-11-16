@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UserContext } from '@/providers/UserContext';
+import { UserContext } from '@/Providers/UserContext';
 
 // Kullanıcı verilerine erişmek için özel bir hook tanımlıyorum
 export const useUser = () => {

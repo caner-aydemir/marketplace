@@ -1,7 +1,7 @@
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 import "./globals.css";
-import {UserProvider} from '@/providers/UserContext';
-import {ToastProvider} from "@/Providers/ToastContext";
+import { UserProvider } from '../Providers/UserContext';
+import { ToastProvider } from "@/Providers/ToastContext";
 import ReactQueryProvider from "@/Providers/ReactQueryProvider";
 
 
@@ -12,19 +12,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
+    children,
+}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <html lang="en">
-        <body>
-        <UserProvider>
-            <ToastProvider>
-                <ReactQueryProvider>{children}</ReactQueryProvider>
-            </ToastProvider>
-        </UserProvider>
-        </body>
+            <body>
+                <UserProvider>
+                    <ToastProvider>
+                        <ReactQueryProvider>{children}</ReactQueryProvider>
+                    </ToastProvider>
+                </UserProvider>
+            </body>
         </html>
     );
 }
