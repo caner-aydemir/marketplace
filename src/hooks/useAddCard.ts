@@ -4,7 +4,7 @@ import { useToast } from "@/Providers/ToastContext";
 
 export const useAddCard = () => {
     // Alışveriş sepeti ile ilgili fonksiyonlar ve verileri alıyorum
-    const { shoppingCart, setShoppingCart } = useCart();
+    const { setShoppingCart } = useCart();
     // Kullanıcı bilgilerini alıyorum
     const { user } = useUser();
     // Toast mesajlarını göstermek için gerekli fonksiyonları alıyorum
@@ -39,6 +39,7 @@ export const useAddCard = () => {
                 showToast("success", "Ürün sepetinize eklendi");
             }
         } catch (error) {
+            console.error("Error", error)
             // Eğer bir hata oluşursa, kullanıcıya uygun bir hata mesajı gösteriyorum
             showToast("error", "Üzgünüz, stoklarda kalmamış olabilir.");
         }

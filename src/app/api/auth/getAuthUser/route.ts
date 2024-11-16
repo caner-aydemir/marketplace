@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
             // Eğer her şey yolundaysa, gelen veriyi JSON olarak döndürüyorum
             return NextResponse.json({ status: true, data: response.data });
         } catch (error) {
+            console.error(error)
             // Kullanıcıyı bilgilendiren bir yanıt oluşturuyorum ve token çerezini siliyorum
             const response = NextResponse.json({ status: false, message: 'Kullanıcı verisi alınamadı' });
             response.cookies.delete("token"); // Token'ı geçersiz olduğu için kaldırıyorum
