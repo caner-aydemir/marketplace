@@ -1,18 +1,18 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import useDetailProduct from "@/hooks/useDetailProduct";
 import useProductReviews from "@/hooks/useProductReviews";
-import { useRouter } from "next/navigation";
+import {useRouter} from "next/navigation";
 import ImageGallery from "react-image-gallery";
-import { useAddCard } from "@/hooks/useAddCard";
-import { DetailProductContent } from "@/components/DetailProduct/DetailProductContent";
+import {useAddCard} from "@/hooks/useAddCard";
+import {DetailProductContent} from "@/components/DetailProduct/DetailProductContent";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: number }> }) => {
+const ProductDetailPage = ({params: paramsPromise}: { params: Promise<{ id: number }> }) => {
     const [productId, setProductId] = useState<number | null>(null);
-    const { data: productDetailData, isFetching, error } = useDetailProduct(productId || 0);
-    const { data: productCommentsData, isFetching: commentsIsLoading } = useProductReviews(productId || 0);
-    const { addCardFunction } = useAddCard();
+    const {data: productDetailData, isFetching, error} = useDetailProduct(productId || 0);
+    const {data: productCommentsData, isFetching: commentsIsLoading} = useProductReviews(productId || 0);
+    const {addCardFunction} = useAddCard();
     const router = useRouter();
 
     // params Promise'ini çöz ve productId'yi ayarla
@@ -46,7 +46,6 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: nu
             </div>
         );
     }
-
     if (productDetailData === undefined || error) {
         return (
             <div className="text-center">
@@ -57,7 +56,6 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: nu
             </div>
         );
     }
-
     const addCardFunct = (productId: number) => {
         addCardFunction(productId);
     };
@@ -76,27 +74,33 @@ const ProductDetailPage = ({ params: paramsPromise }: { params: Promise<{ id: nu
                         }))}
                     />
                 </div>
-                <div className="col-span-12 md:col-span-8">
+                <div className=" col-span-12 md:col-span-8">
                     <DetailProductContent
                         productDetailData={productDetailData}
                         productCommentsData={productCommentsData}
                     />
                 </div>
             </div>
-            <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 z-50">
-                <div className="flex items-center justify-evenly py-4">
-                    <h1 className="font-bold px-6 py-4 border">Sipariş Özeti:</h1>
-                    <div className="px-6">
-                        <h1 className="font-bold text-sm">{productDetailData.title}</h1>
-                        <p>{productDetailData.description}</p>
+            <div className={"flex justify-between  items-center fixed bottom-0 w-[100%] h-20 border-t-2"}>
+                <div className={" h-full w-[10%] flex items-center  border-r-2 p-3"}>
+                    <p className={"text-xl font-bold"}>Sipariş Özeti</p>
+                </div>
+                <div className={"w-[90%]  px-3 "}>
+                    <div className={"flex justify-between w-[100%]  "}>
+                        <div className={" w-[75%]"}>
+                            <p className={"font-bold text-xl"}>{productDetailData.title}</p>
+                            <p>{productDetailData.description}</p>
+                        </div>
+                        <div className={"flex gap-x-2 justify-center items-center w-[25%]"}>
+                            <p className="font-bold text-3xl">${productDetailData.price}</p>
+                            <button
+                                className="bg-[#00B500] text-white px-4 py-2  rounded-md"
+                                onClick={() => addCardFunct(productId)}
+                            >
+                                Sepete Ekle
+                            </button>
+                        </div>
                     </div>
-                    <p className="font-bold text-3xl">${productDetailData.price}</p>
-                    <button
-                        className="bg-[#00B500] text-white px-4 py-2 rounded-md"
-                        onClick={() => addCardFunct(productId)}
-                    >
-                        Sepete Ekle
-                    </button>
                 </div>
             </div>
         </div>

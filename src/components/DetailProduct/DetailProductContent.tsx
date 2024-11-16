@@ -123,26 +123,13 @@ export function DetailProductContent({
                 ))}
             </div>
             {/* Ürün Yorumları */}
-            <div className="flex flex-col mt-6">
+            <div className="flex flex-col">
                 <h3 className="font-bold">Ürün Yorumları:</h3>
                 <div className="flex items-center gap-x-1 font-semibold mt-6">
                     <span>{productCommentsData?.user?.username}</span>
                     <span className="flex">{filledStars}</span>
                 </div>
                 <div>{productCommentsData?.body}</div>
-            </div>
-            <div className=" bg-white p-4 border-t flex items-center justify-between">
-                <div>
-                    <h1 className="font-bold">Order Summary:</h1>
-                    <p>${productDetailData.price}</p>
-                </div>
-                <button
-                    className={`text-white px-6 py-2 rounded-md ${isAdding ? "bg-gray-600" : "bg-[#00B500] "}`}
-                    disabled={isAdding}
-                    onClick={() => handleAddToCart(productDetailData.id)}
-                >
-                    {isAdding ? "Ekleniyor.." : "Sepete Ekle"}
-                </button>
             </div>
         </div>
 
