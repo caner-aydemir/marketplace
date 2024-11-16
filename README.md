@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Marketplace Uygulaması
 
-## Getting Started
+**Marketplace**, modern web teknolojilerini kullanarak geliştirilmiş bir e-ticaret platformudur. Kullanıcıların ürünleri listeleyebileceği, detaylarına göz atabileceği ve sepetlerine ekleyebileceği, kullanıcı dostu ve performans odaklı bir uygulamadır.
 
-First, run the development server:
+🚀 **Canlı Demo**: [Marketplace Uygulamasını Deneyin](https://marketplace-d567.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Özellikler
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🛍️ Kullanıcılar İçin
+- **Ürün Listeleme**: Farklı kategorilere göre ürünleri görüntüleyebilir, arama yapabilirsiniz.
+- **Ürün Detayları**: Ürün açıklamaları, görselleri ve fiyat bilgilerine ulaşabilirsiniz.
+- **Sepete Ekleme**: Beğendiğiniz ürünleri sepetinize ekleyerek alışverişinizi kolayca yönetebilirsiniz.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🧑‍💻 Geliştiriciler İçin
+- **State Management**: **Context API** kullanılarak global state yönetimi sağlanmıştır.
+- **API Çağrıları**: Tüm API istekleri **`app/api`** dizini üzerinden yapılmaktadır, bu sayede düzenli ve modüler bir yapı sunulmaktadır.
+- **Custom Hooks**: Uygulamanın API çağrıları ve state yönetimini optimize etmek için özel React hook'ları oluşturulmuş ve kullanılmıştır.
+- **Dinamik API Entegrasyonu**: **DummyJSON API** kullanılarak sahte ürün verileriyle hızlı prototipleme yapılabilir.
+- **Hızlı Stil Yönetimi**: **Tailwind CSS** ile modern ve esnek bir kullanıcı arayüzü oluşturulmuştur.
+- **Performans Optimizasyonu**: **Next.js** ile sunucu taraflı render (SSR) ve statik site oluşturma (SSG) özelliklerinden faydalanılmıştır.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Teknolojiler ve Araçlar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Bu projede kullanılan ana teknolojiler ve araçlar şunlardır:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Ana Teknolojiler
+- **Next.js 15.0.3**
+- **React 18.2.0**
+- **Tailwind CSS 3.3.3**
+- **DummyJSON API**
+- **Context API**
 
-## Deploy on Vercel
+### Ek Kütüphaneler
+- **axios**
+- **react-image-gallery**
+- **tanstack/react-query**
+- **react-toastify**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📌 Özel Dizin: `app/api/`
+
+Tüm API çağrıları **`app/api`** dizininde organize edilmiştir. Bu yapı, projeyi modüler hale getirir ve API iş mantığını uygulama bileşenlerinden ayırır.
+
+---
+
+## 💻 Kurulum ve Çalıştırma
+
+Projenin yerel ortamda çalıştırılması için aşağıdaki adımları izleyin:
+
+1. Depoyu klonlayın:
+   \`\`\`bash
+   git clone https://github.com/caner-aydemir/marketplace.git
+   \`\`\`
+
+2. Proje dizinine gidin:
+   \`\`\`bash
+   cd marketplace
+   \`\`\`
+
+3. Gerekli bağımlılıkları yükleyin:
+   \`\`\`bash
+   npm install
+   \`\`\`
+
+4. Geliştirme sunucusunu başlatın:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+   Tarayıcınızda \`http://localhost:3000\` adresine giderek uygulamayı çalıştırabilirsiniz.
+
+---
+
+## 👩‍💻 Geliştirici
+
+Bu proje **Caner Aydemir** tarafından geliştirilmiştir. İlgili sorularınız ve önerileriniz için benimle iletişime geçebilirsiniz!
