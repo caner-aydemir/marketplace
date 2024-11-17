@@ -3,6 +3,9 @@
 **Marketplace**, modern web teknolojilerini kullanarak geliştirilmiş bir e-ticaret platformudur. Kullanıcıların ürünleri listeleyebileceği, detaylarına göz atabileceği ve sepetlerine ekleyebileceği, kullanıcı dostu ve performans odaklı bir uygulamadır.
 
 🚀 **Canlı Demo**: [Marketplace Uygulamasını Deneyin](https://marketplace-d567.vercel.app)
+**Kullanıcı adı : emilys
+**Şifre : emilyspass
+
 
 ---
 
